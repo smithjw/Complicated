@@ -166,12 +166,20 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     }
     
     func createGraphicCornerTemplate(from date:Date) -> CLKComplicationTemplate {
-        let timeProvider = CLKTimeTextProvider(date: date)
-        timeProvider.tintColor = self.configuredColor
         
-        let template = CLKComplicationTemplateGraphicCornerStackText()
+        let color = self.configuredColor
+        
+        let timeProvider = CLKTimeTextProvider(date: date)
+        timeProvider.tintColor = color
+        
+//        let template = CLKComplicationTemplateGraphicCornerStackText()
+//        template.outerTextProvider = timeProvider
+//        template.innerTextProvider = createDayTextProvider(from: date)
+        
+        let gaugeProvider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: color, fillFraction: 1.0)
+        let template = CLKComplicationTemplateGraphicCornerGaugeText()
         template.outerTextProvider = timeProvider
-        template.innerTextProvider = createDayTextProvider(from: date)
+        template.gaugeProvider = gaugeProvider
         
         return template
     }
@@ -219,6 +227,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             template = createGaugeTemplate(from: date)
         case .graphicRectangular:
             template = createGraphicRectangularTemplate(from: date)
+        
         }
         
         return template

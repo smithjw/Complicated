@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:TimeOfDay.xcodeproj">
+      location = "self:/Users/james/code/Complicated-Time/Complicated Time.xcodeproj">
    </FileRef>
 </Workspace>

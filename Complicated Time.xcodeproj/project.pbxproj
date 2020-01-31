@@ -237,12 +237,14 @@
 				TargetAttributes = {
 					01463F2E21A858B600078CB5 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1130;
 					};
 					01463F4021A858B900078CB5 = {
 						CreatedOnToolsVersion = 10.0;
 					};
 					01463F4F21A858BA00078CB5 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1130;
 						SystemCapabilities = {
 							com.apple.BackgroundModes.watchos.extension = {
 								enabled = 1;
@@ -251,7 +253,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 01463F2A21A858B600078CB5 /* Build configuration list for PBXProject "TimeOfDay" */;
+			buildConfigurationList = 01463F2A21A858B600078CB5 /* Build configuration list for PBXProject "Complicated Time" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -417,7 +419,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -472,7 +474,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -487,20 +489,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B5ND7AU59N;
+				DEVELOPMENT_TEAM = 9E4JQYV2GD;
 				INFOPLIST_FILE = "TimeOfDay WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rogness-software.timeofday.watchkitapp.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = me.smithjw.timeofday.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
@@ -509,20 +511,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B5ND7AU59N;
+				DEVELOPMENT_TEAM = 9E4JQYV2GD;
 				INFOPLIST_FILE = "TimeOfDay WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rogness-software.timeofday.watchkitapp.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = me.smithjw.timeofday.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};
@@ -532,16 +534,16 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B5ND7AU59N;
+				DEVELOPMENT_TEAM = 9E4JQYV2GD;
 				IBSC_MODULE = TimeOfDay_WatchKit_Extension;
 				INFOPLIST_FILE = "TimeOfDay WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rogness-software.timeofday.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = me.smithjw.timeofday.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
@@ -551,16 +553,16 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B5ND7AU59N;
+				DEVELOPMENT_TEAM = 9E4JQYV2GD;
 				IBSC_MODULE = TimeOfDay_WatchKit_Extension;
 				INFOPLIST_FILE = "TimeOfDay WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rogness-software.timeofday.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = me.smithjw.timeofday.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};
@@ -569,15 +571,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B5ND7AU59N;
+				DEVELOPMENT_TEAM = 9E4JQYV2GD;
 				INFOPLIST_FILE = TimeOfDay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rogness-software.timeofday";
+				PRODUCT_BUNDLE_IDENTIFIER = me.smithjw.timeofday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -587,15 +589,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B5ND7AU59N;
+				DEVELOPMENT_TEAM = 9E4JQYV2GD;
 				INFOPLIST_FILE = TimeOfDay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rogness-software.timeofday";
+				PRODUCT_BUNDLE_IDENTIFIER = me.smithjw.timeofday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -603,7 +605,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		01463F2A21A858B600078CB5 /* Build configuration list for PBXProject "TimeOfDay" */ = {
+		01463F2A21A858B600078CB5 /* Build configuration list for PBXProject "Complicated Time" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				01463F5E21A858BA00078CB5 /* Debug */,
