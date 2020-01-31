@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  TimeOfDay
+//  Complicated Time
 //
 //  Created by Nick Rogness on 11/23/18.
 //  Copyright © 2018 Rogness Software. All rights reserved.

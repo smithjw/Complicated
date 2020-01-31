@@ -1,6 +1,6 @@
 //
 //  ComplicationController.swift
-//  TimeOfDay WatchKit Extension
+//  Complicated Time WatchKit Extension
 //
 //  Created by Nick Rogness on 11/23/18.
 //  Copyright © 2018 Rogness Software. All rights reserved.
@@ -228,6 +228,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         case .graphicRectangular:
             template = createGraphicRectangularTemplate(from: date)
         
+        @unknown default:
+            print("Ummmmm")
         }
         
         return template

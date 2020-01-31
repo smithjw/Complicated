@@ -1,6 +1,6 @@
 //
 //  Colors.swift
-//  TimeOfDay
+//  Complicated Time
 //
 //  Created by Nick Rogness on 12/12/18.
 //  Copyright © 2018 Rogness Software. All rights reserved.

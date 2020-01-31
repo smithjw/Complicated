@@ -12,14 +12,15 @@
 		01463F3821A858B600078CB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01463F3621A858B600078CB5 /* Main.storyboard */; };
 		01463F3A21A858B900078CB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01463F3921A858B900078CB5 /* Assets.xcassets */; };
 		01463F3D21A858B900078CB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01463F3B21A858B900078CB5 /* LaunchScreen.storyboard */; };
-		01463F4221A858B900078CB5 /* TimeOfDay WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 01463F4121A858B900078CB5 /* TimeOfDay WatchKit App.app */; };
+		01463F4221A858B900078CB5 /* Complicated Time WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 01463F4121A858B900078CB5 /* Complicated Time WatchKit App.app */; };
 		01463F4821A858B900078CB5 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01463F4621A858B900078CB5 /* Interface.storyboard */; };
 		01463F4A21A858B900078CB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01463F4921A858B900078CB5 /* Assets.xcassets */; };
-		01463F5121A858BA00078CB5 /* TimeOfDay WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 01463F5021A858BA00078CB5 /* TimeOfDay WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		01463F5121A858BA00078CB5 /* Complicated Time WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 01463F5021A858BA00078CB5 /* Complicated Time WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		01463F5621A858BA00078CB5 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01463F5521A858BA00078CB5 /* InterfaceController.swift */; };
 		01463F5821A858BA00078CB5 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01463F5721A858BA00078CB5 /* ExtensionDelegate.swift */; };
 		01463F5A21A858BA00078CB5 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01463F5921A858BA00078CB5 /* ComplicationController.swift */; };
 		01463F5C21A858BA00078CB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01463F5B21A858BA00078CB5 /* Assets.xcassets */; };
+		1AF6C82623E3C8FF00962A35 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AF6C82523E3C8FF00962A35 /* Default-568h@2x.png */; };
 		9622F90921C1CED700E4C333 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9622F90821C1CED700E4C333 /* Colors.swift */; };
 		9622F90A21C1CFE500E4C333 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9622F90821C1CED700E4C333 /* Colors.swift */; };
 /* End PBXBuildFile section */
@@ -48,7 +49,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				01463F5121A858BA00078CB5 /* TimeOfDay WatchKit Extension.appex in Embed App Extensions */,
+				01463F5121A858BA00078CB5 /* Complicated Time WatchKit Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,7 +60,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				01463F4221A858B900078CB5 /* TimeOfDay WatchKit App.app in Embed Watch Content */,
+				01463F4221A858B900078CB5 /* Complicated Time WatchKit App.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,23 +68,24 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		01463F2F21A858B600078CB5 /* TimeOfDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeOfDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		01463F2F21A858B600078CB5 /* Complicated Time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Complicated Time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01463F3221A858B600078CB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01463F3421A858B600078CB5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		01463F3721A858B600078CB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01463F3921A858B900078CB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01463F3C21A858B900078CB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01463F3E21A858B900078CB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		01463F4121A858B900078CB5 /* TimeOfDay WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TimeOfDay WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		01463F4121A858B900078CB5 /* Complicated Time WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Complicated Time WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01463F4721A858B900078CB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		01463F4921A858B900078CB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01463F4B21A858B900078CB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		01463F5021A858BA00078CB5 /* TimeOfDay WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "TimeOfDay WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		01463F5021A858BA00078CB5 /* Complicated Time WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Complicated Time WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01463F5521A858BA00078CB5 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		01463F5721A858BA00078CB5 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		01463F5921A858BA00078CB5 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		01463F5B21A858BA00078CB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01463F5D21A858BA00078CB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1AF6C82523E3C8FF00962A35 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9622F90821C1CED700E4C333 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,10 +110,11 @@
 		01463F2621A858B600078CB5 = {
 			isa = PBXGroup;
 			children = (
+				1AF6C82523E3C8FF00962A35 /* Default-568h@2x.png */,
 				9622F90721C1CEA600E4C333 /* Common */,
-				01463F3121A858B600078CB5 /* TimeOfDay */,
-				01463F4521A858B900078CB5 /* TimeOfDay WatchKit App */,
-				01463F5421A858BA00078CB5 /* TimeOfDay WatchKit Extension */,
+				01463F3121A858B600078CB5 /* Complicated Time */,
+				01463F4521A858B900078CB5 /* Complicated Time WatchKit App */,
+				01463F5421A858BA00078CB5 /* Complicated Time WatchKit Extension */,
 				01463F3021A858B600078CB5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -119,14 +122,14 @@
 		01463F3021A858B600078CB5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				01463F2F21A858B600078CB5 /* TimeOfDay.app */,
-				01463F4121A858B900078CB5 /* TimeOfDay WatchKit App.app */,
-				01463F5021A858BA00078CB5 /* TimeOfDay WatchKit Extension.appex */,
+				01463F2F21A858B600078CB5 /* Complicated Time.app */,
+				01463F4121A858B900078CB5 /* Complicated Time WatchKit App.app */,
+				01463F5021A858BA00078CB5 /* Complicated Time WatchKit Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		01463F3121A858B600078CB5 /* TimeOfDay */ = {
+		01463F3121A858B600078CB5 /* Complicated Time */ = {
 			isa = PBXGroup;
 			children = (
 				01463F3221A858B600078CB5 /* AppDelegate.swift */,
@@ -136,20 +139,20 @@
 				01463F3B21A858B900078CB5 /* LaunchScreen.storyboard */,
 				01463F3E21A858B900078CB5 /* Info.plist */,
 			);
-			path = TimeOfDay;
+			path = "Complicated Time";
 			sourceTree = "<group>";
 		};
-		01463F4521A858B900078CB5 /* TimeOfDay WatchKit App */ = {
+		01463F4521A858B900078CB5 /* Complicated Time WatchKit App */ = {
 			isa = PBXGroup;
 			children = (
 				01463F4621A858B900078CB5 /* Interface.storyboard */,
 				01463F4921A858B900078CB5 /* Assets.xcassets */,
 				01463F4B21A858B900078CB5 /* Info.plist */,
 			);
-			path = "TimeOfDay WatchKit App";
+			path = "Complicated Time WatchKit App";
 			sourceTree = "<group>";
 		};
-		01463F5421A858BA00078CB5 /* TimeOfDay WatchKit Extension */ = {
+		01463F5421A858BA00078CB5 /* Complicated Time WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
 				01463F5521A858BA00078CB5 /* InterfaceController.swift */,
@@ -158,7 +161,7 @@
 				01463F5B21A858BA00078CB5 /* Assets.xcassets */,
 				01463F5D21A858BA00078CB5 /* Info.plist */,
 			);
-			path = "TimeOfDay WatchKit Extension";
+			path = "Complicated Time WatchKit Extension";
 			sourceTree = "<group>";
 		};
 		9622F90721C1CEA600E4C333 /* Common */ = {
@@ -172,9 +175,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		01463F2E21A858B600078CB5 /* TimeOfDay */ = {
+		01463F2E21A858B600078CB5 /* Complicated Time */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 01463F6821A858BA00078CB5 /* Build configuration list for PBXNativeTarget "TimeOfDay" */;
+			buildConfigurationList = 01463F6821A858BA00078CB5 /* Build configuration list for PBXNativeTarget "Complicated Time" */;
 			buildPhases = (
 				01463F2B21A858B600078CB5 /* Sources */,
 				01463F2C21A858B600078CB5 /* Frameworks */,
@@ -186,14 +189,14 @@
 			dependencies = (
 				01463F4421A858B900078CB5 /* PBXTargetDependency */,
 			);
-			name = TimeOfDay;
+			name = "Complicated Time";
 			productName = TimeOfDay;
-			productReference = 01463F2F21A858B600078CB5 /* TimeOfDay.app */;
+			productReference = 01463F2F21A858B600078CB5 /* Complicated Time.app */;
 			productType = "com.apple.product-type.application";
 		};
-		01463F4021A858B900078CB5 /* TimeOfDay WatchKit App */ = {
+		01463F4021A858B900078CB5 /* Complicated Time WatchKit App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 01463F6421A858BA00078CB5 /* Build configuration list for PBXNativeTarget "TimeOfDay WatchKit App" */;
+			buildConfigurationList = 01463F6421A858BA00078CB5 /* Build configuration list for PBXNativeTarget "Complicated Time WatchKit App" */;
 			buildPhases = (
 				01463F3F21A858B900078CB5 /* Resources */,
 				01463F6321A858BA00078CB5 /* Embed App Extensions */,
@@ -203,14 +206,14 @@
 			dependencies = (
 				01463F5321A858BA00078CB5 /* PBXTargetDependency */,
 			);
-			name = "TimeOfDay WatchKit App";
+			name = "Complicated Time WatchKit App";
 			productName = "TimeOfDay WatchKit App";
-			productReference = 01463F4121A858B900078CB5 /* TimeOfDay WatchKit App.app */;
+			productReference = 01463F4121A858B900078CB5 /* Complicated Time WatchKit App.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
-		01463F4F21A858BA00078CB5 /* TimeOfDay WatchKit Extension */ = {
+		01463F4F21A858BA00078CB5 /* Complicated Time WatchKit Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 01463F6021A858BA00078CB5 /* Build configuration list for PBXNativeTarget "TimeOfDay WatchKit Extension" */;
+			buildConfigurationList = 01463F6021A858BA00078CB5 /* Build configuration list for PBXNativeTarget "Complicated Time WatchKit Extension" */;
 			buildPhases = (
 				01463F4C21A858BA00078CB5 /* Sources */,
 				01463F4D21A858BA00078CB5 /* Frameworks */,
@@ -220,9 +223,9 @@
 			);
 			dependencies = (
 			);
-			name = "TimeOfDay WatchKit Extension";
+			name = "Complicated Time WatchKit Extension";
 			productName = "TimeOfDay WatchKit Extension";
-			productReference = 01463F5021A858BA00078CB5 /* TimeOfDay WatchKit Extension.appex */;
+			productReference = 01463F5021A858BA00078CB5 /* Complicated Time WatchKit Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
@@ -266,9 +269,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				01463F2E21A858B600078CB5 /* TimeOfDay */,
-				01463F4021A858B900078CB5 /* TimeOfDay WatchKit App */,
-				01463F4F21A858BA00078CB5 /* TimeOfDay WatchKit Extension */,
+				01463F2E21A858B600078CB5 /* Complicated Time */,
+				01463F4021A858B900078CB5 /* Complicated Time WatchKit App */,
+				01463F4F21A858BA00078CB5 /* Complicated Time WatchKit Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -279,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01463F3D21A858B900078CB5 /* LaunchScreen.storyboard in Resources */,
+				1AF6C82623E3C8FF00962A35 /* Default-568h@2x.png in Resources */,
 				01463F3A21A858B900078CB5 /* Assets.xcassets in Resources */,
 				01463F3821A858B600078CB5 /* Main.storyboard in Resources */,
 			);
@@ -330,12 +334,12 @@
 /* Begin PBXTargetDependency section */
 		01463F4421A858B900078CB5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 01463F4021A858B900078CB5 /* TimeOfDay WatchKit App */;
+			target = 01463F4021A858B900078CB5 /* Complicated Time WatchKit App */;
 			targetProxy = 01463F4321A858B900078CB5 /* PBXContainerItemProxy */;
 		};
 		01463F5321A858BA00078CB5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 01463F4F21A858BA00078CB5 /* TimeOfDay WatchKit Extension */;
+			target = 01463F4F21A858BA00078CB5 /* Complicated Time WatchKit Extension */;
 			targetProxy = 01463F5221A858BA00078CB5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -490,13 +494,13 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9E4JQYV2GD;
-				INFOPLIST_FILE = "TimeOfDay WatchKit Extension/Info.plist";
+				INFOPLIST_FILE = "Complicated Time WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.smithjw.timeofday.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.smithjw.complicated-time.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -512,13 +516,13 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9E4JQYV2GD;
-				INFOPLIST_FILE = "TimeOfDay WatchKit Extension/Info.plist";
+				INFOPLIST_FILE = "Complicated Time WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.smithjw.timeofday.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.smithjw.complicated-time.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -535,9 +539,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9E4JQYV2GD;
-				IBSC_MODULE = TimeOfDay_WatchKit_Extension;
-				INFOPLIST_FILE = "TimeOfDay WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = me.smithjw.timeofday.watchkitapp;
+				IBSC_MODULE = ComplicatedTime_WatchKit_Extension;
+				INFOPLIST_FILE = "Complicated Time WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.smithjw.complicated-time.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -554,9 +558,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9E4JQYV2GD;
-				IBSC_MODULE = TimeOfDay_WatchKit_Extension;
-				INFOPLIST_FILE = "TimeOfDay WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = me.smithjw.timeofday.watchkitapp;
+				IBSC_MODULE = ComplicatedTime_WatchKit_Extension;
+				INFOPLIST_FILE = "Complicated Time WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.smithjw.complicated-time.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -572,12 +576,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9E4JQYV2GD;
-				INFOPLIST_FILE = TimeOfDay/Info.plist;
+				INFOPLIST_FILE = "Complicated Time/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.smithjw.timeofday;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.smithjw.complicated-time";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -590,12 +594,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9E4JQYV2GD;
-				INFOPLIST_FILE = TimeOfDay/Info.plist;
+				INFOPLIST_FILE = "Complicated Time/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.smithjw.timeofday;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.smithjw.complicated-time";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -614,7 +618,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		01463F6021A858BA00078CB5 /* Build configuration list for PBXNativeTarget "TimeOfDay WatchKit Extension" */ = {
+		01463F6021A858BA00078CB5 /* Build configuration list for PBXNativeTarget "Complicated Time WatchKit Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				01463F6121A858BA00078CB5 /* Debug */,
@@ -623,7 +627,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		01463F6421A858BA00078CB5 /* Build configuration list for PBXNativeTarget "TimeOfDay WatchKit App" */ = {
+		01463F6421A858BA00078CB5 /* Build configuration list for PBXNativeTarget "Complicated Time WatchKit App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				01463F6521A858BA00078CB5 /* Debug */,
@@ -632,7 +636,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		01463F6821A858BA00078CB5 /* Build configuration list for PBXNativeTarget "TimeOfDay" */ = {
+		01463F6821A858BA00078CB5 /* Build configuration list for PBXNativeTarget "Complicated Time" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				01463F6921A858BA00078CB5 /* Debug */,
