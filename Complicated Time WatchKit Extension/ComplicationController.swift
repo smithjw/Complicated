@@ -1,9 +1,9 @@
 //
 //  ComplicationController.swift
-//  Complicated Time WatchKit Extension
+//  It's Complicated WatchKit Extension
 //
-//  Created by Nick Rogness on 11/23/18.
-//  Copyright © 2018 Rogness Software. All rights reserved.
+//  Created by James Smith on 1/2/20.
+//  Copyright © 2020 James Smith. All rights reserved.
 //
 
 import ClockKit
@@ -56,22 +56,55 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         return color
     }
     
+//    private var largeText:Bool {
+//        if let largeTextValue = UserDefaults.standard.object(forKey: "LargeText") as? Bool {
+//            if let largeText = Colors.color(namedBy: timeColorName) {
+//                color = timeColor
+//            }
+//        }
+//        
+//        return largeText
+//    }
+    
     private func createDayTextProvider(from date:Date) -> CLKSimpleTextProvider {
         let dayOfMonth = Calendar.current.component(.day, from: date)
         let dayProvider = CLKSimpleTextProvider(text: "\(dayOfMonth)", shortText: "\(dayOfMonth)")
         
-        let color = self.configuredColor
-        dayProvider.tintColor = color
-        
         return dayProvider
     }
     
-    private func createGaugeTemplate(from date:Date) -> CLKComplicationTemplateGraphicCircularClosedGaugeText {
-        let dayProvider = createDayTextProvider(from: date)
-        let guageProvider = CLKSimpleGaugeProvider(style: .ring, gaugeColor: self.configuredColor, fillFraction: 1.0)
+    private func createWeekdayTextProvider(from date:Date) -> CLKSimpleTextProvider {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEE"
+        let dayInWeek = dateFormatter.string(from: date)
         
-        let gaugeTemplate = CLKComplicationTemplateGraphicCircularClosedGaugeText()
+        let weekdayProvider = CLKSimpleTextProvider(text: "\(dayInWeek)", shortText: "\(dayInWeek)")
+        
+        let color = self.configuredColor
+        weekdayProvider.tintColor = color
+        
+        return weekdayProvider
+    }
+    
+//    private func createGaugeTemplate(from date:Date) -> CLKComplicationTemplateGraphicCircularClosedGaugeText {
+//        let dayProvider = createDayTextProvider(from: date)
+//        let guageProvider = CLKSimpleGaugeProvider(style: .ring, gaugeColor: self.configuredColor, fillFraction: 1.0)
+//
+//        let gaugeTemplate = CLKComplicationTemplateGraphicCircularClosedGaugeText()
+//        gaugeTemplate.centerTextProvider = dayProvider
+//        gaugeTemplate.gaugeProvider = guageProvider
+//
+//        return gaugeTemplate
+//    }
+    
+    private func createGaugeTemplate(from date:Date) -> CLKComplicationTemplateGraphicCircularOpenGaugeSimpleText {
+        let dayProvider = createDayTextProvider(from: date)
+        let weekdayProvider = createWeekdayTextProvider(from: date)
+        let guageProvider = CLKSimpleGaugeProvider(style: .ring, gaugeColors: [.cyan, .blue], gaugeColorLocations: nil, fillFraction: 1.0)
+        
+        let gaugeTemplate = CLKComplicationTemplateGraphicCircularOpenGaugeSimpleText()
         gaugeTemplate.centerTextProvider = dayProvider
+        gaugeTemplate.bottomTextProvider = weekdayProvider
         gaugeTemplate.gaugeProvider = guageProvider
         
         return gaugeTemplate
@@ -94,76 +127,6 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
 //        return entry
 //    }
     
-    private func createModularSmallTemplate(from date:Date) -> CLKComplicationTemplate {
-        let provider = CLKTimeTextProvider(date: date)
-        provider.tintColor = self.configuredColor
-
-        let template = CLKComplicationTemplateModularSmallSimpleText()
-        template.textProvider = provider
-        return template
-    }
-    
-    private func createModularLargeTemplate(from date:Date) -> CLKComplicationTemplate {
-        let color = self.configuredColor
-        let timeProvider = CLKTimeTextProvider(date: date)
-        timeProvider.tintColor = color
-        
-        let dateProvider = CLKDateTextProvider(date: date, units: .day)
-        dateProvider.tintColor = color
-        
-        let template = CLKComplicationTemplateModularLargeStandardBody()
-        template.headerTextProvider = dateProvider
-        template.body1TextProvider = timeProvider
-        return template
-    }
-    
-    private func createUtilitarianSmallTemplate(from date:Date) -> CLKComplicationTemplate {
-        let template = CLKComplicationTemplateUtilitarianSmallRingText()
-        template.textProvider = createDayTextProvider(from: date)
-        template.tintColor = self.configuredColor
-        template.ringStyle = .closed
-        template.fillFraction = 1.0
-        
-        return template
-    }
-    
-    func createUtilitarianSmallFlatTemplate(from date:Date) -> CLKComplicationTemplate {
-        let provider = CLKTimeTextProvider(date: date)
-        provider.tintColor = self.configuredColor
-        
-        let template = CLKComplicationTemplateUtilitarianSmallFlat()
-        template.textProvider = provider
-        return template
-    }
-    
-    func createUtilitarianLargeTemplate(from date:Date) -> CLKComplicationTemplate {
-        let provider = CLKTimeTextProvider(date: date)
-        provider.tintColor = self.configuredColor
-        
-        let template = CLKComplicationTemplateUtilitarianLargeFlat()
-        template.textProvider = provider
-        return template
-    }
-    
-    func createCircularSmallTemplate(from date:Date) -> CLKComplicationTemplate {
-        let template = CLKComplicationTemplateCircularSmallRingText()
-        template.textProvider = createDayTextProvider(from: date)
-        template.tintColor = self.configuredColor
-        template.ringStyle = .closed
-        template.fillFraction = 1.0
-        
-        return template
-    }
-    
-    func createExtaLargeTemplate(from date:Date) -> CLKComplicationTemplate {
-        let template = CLKComplicationTemplateExtraLargeRingText()
-        template.textProvider = createDayTextProvider(from: date)
-        template.tintColor = self.configuredColor
-        template.ringStyle = .closed
-        template.fillFraction = 1.0
-        
-        return template
-    }
     
     func createGraphicCornerTemplate(from date:Date) -> CLKComplicationTemplate {
         
@@ -172,61 +135,31 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         let timeProvider = CLKTimeTextProvider(date: date)
         timeProvider.tintColor = color
         
-//        let template = CLKComplicationTemplateGraphicCornerStackText()
-//        template.outerTextProvider = timeProvider
-//        template.innerTextProvider = createDayTextProvider(from: date)
-        
-        let gaugeProvider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: color, fillFraction: 1.0)
-        let template = CLKComplicationTemplateGraphicCornerGaugeText()
-        template.outerTextProvider = timeProvider
-        template.gaugeProvider = gaugeProvider
-        
-        return template
-    }
-    
-    func createGraphicRectangularTemplate(from date:Date) -> CLKComplicationTemplate {
-        
-        let color = self.configuredColor
-        
-        let dateProvider = CLKDateTextProvider(date: date, units: .day)
-        dateProvider.tintColor = color
-        let timeProvider = CLKTimeTextProvider(date: date)
-        timeProvider.tintColor = color
-        let gaugeProvider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: color, fillFraction: 1.0)
-        
-        let template = CLKComplicationTemplateGraphicRectangularTextGauge()
-        template.headerTextProvider = dateProvider
-        template.body1TextProvider = timeProvider
-        template.gaugeProvider = gaugeProvider
-        
-        return template
+        if UserDefaults.standard.object(forKey: "LargeText") as? Bool ?? true {
+            let gaugeProvider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: .black, fillFraction: 1.0)
+            let template = CLKComplicationTemplateGraphicCornerGaugeText()
+            template.outerTextProvider = timeProvider
+            template.gaugeProvider = gaugeProvider
+            
+            return template
+        } else {
+            let template = CLKComplicationTemplateGraphicCornerStackText()
+            template.outerTextProvider = timeProvider
+            template.innerTextProvider = createWeekdayTextProvider(from: date)
+            
+            return template
+        }
     }
     
     func buildTemplate(for complication: CLKComplication, at date:Date) -> CLKComplicationTemplate? {
         var template:CLKComplicationTemplate? = nil
         switch complication.family {
-        case .modularSmall:
-            template = createModularSmallTemplate(from: date)
-        case .modularLarge:
-            template = createModularLargeTemplate(from: date)
-        case .utilitarianSmall:
-            template = createUtilitarianSmallTemplate(from: date)
-        case .utilitarianSmallFlat:
-            template = createUtilitarianSmallFlatTemplate(from: date)
-        case .utilitarianLarge:
-            template = createUtilitarianLargeTemplate(from: date)
-        case .circularSmall:
-            template = createCircularSmallTemplate(from: date)
-        case .extraLarge:
-            template = createExtaLargeTemplate(from: date)
         case .graphicCorner:
             template = createGraphicCornerTemplate(from: date)
         case .graphicBezel:
             template = createBezelCircularTextTemplate(from: date)
         case .graphicCircular:
             template = createGaugeTemplate(from: date)
-        case .graphicRectangular:
-            template = createGraphicRectangularTemplate(from: date)
         
         @unknown default:
             print("Ummmmm")

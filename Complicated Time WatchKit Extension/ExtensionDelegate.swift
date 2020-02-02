@@ -1,13 +1,13 @@
 //
 //  ExtensionDelegate.swift
-//  Complicated Time WatchKit Extension
+//  It's Complicated WatchKit Extension
 //
-//  Created by Nick Rogness on 11/23/18.
-//  Copyright © 2018 Rogness Software. All rights reserved.
+//  Created by James Smith on 1/2/20.
+//  Copyright © 2020 James Smith. All rights reserved.
 //
 
 import WatchKit
-import WatchConnectivity
+//import WatchConnectivity
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
@@ -35,7 +35,11 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
-        setupWatchConnectivity()
+        
+        // Sets Large Text switch value to true
+        UserDefaults.standard.register(defaults: ["LargeText" : true])
+        UserDefaults.standard.set(true, forKey: "LargeText")
+        
         print("ExtensionDelegate applicationDidFinishLaunching()")
 
     }
@@ -96,56 +100,56 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         }
     }
 
-    func setupWatchConnectivity() {
-        if WCSession.isSupported() {
-            let session  = WCSession.default
-            session.delegate = self
-            session.activate()
-        }
-    }
+//    func setupWatchConnectivity() {
+//        if WCSession.isSupported() {
+//            let session  = WCSession.default
+//            session.delegate = self
+//            session.activate()
+//        }
+//    }
 }
 
 extension Notification.Name {
     static let refresh = Notification.Name("refresh")
 }
 
-extension ExtensionDelegate: WCSessionDelegate {
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        if let error = error {
-            print("WC Session activation failed with error: \(error.localizedDescription)")
-            return
-        }
-        
-        print("WC Session activated with state: \(activationState.rawValue)")
-    }
-    
-    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-        if let colorName = applicationContext["TimeColor"] as? String {
-            print("Watch received app context color update to: \(colorName)")
-            
-            updateWatch(for: colorName)
-        }
-    }
-    
-    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
-        if let colorName = userInfo["TimeColor"] as? String {
-            print("Watch received user info color update to: \(colorName)")
-            updateWatch(for: colorName)
-        }
-    }
-    
-    func session(_ session: WCSession, didFinish userInfoTransfer: WCSessionUserInfoTransfer, error: Error?) {
-        if let error = error {
-            print("Watch failed to recieve user info transfer: \(error.localizedDescription)")
-            return
-        }
-    }
-    
-    func updateWatch(for colorName:String) {
-        UserDefaults.standard.set(colorName, forKey: "TimeColor")
-        ExtensionDelegate.reloadComplications()
-        
-        NotificationCenter.default.post(name: .refresh, object: nil)
-    }
-    
-}
+//extension ExtensionDelegate: WCSessionDelegate {
+//    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+//        if let error = error {
+//            print("WC Session activation failed with error: \(error.localizedDescription)")
+//            return
+//        }
+//
+//        print("WC Session activated with state: \(activationState.rawValue)")
+//    }
+//
+//    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+//        if let colorName = applicationContext["TimeColor"] as? String {
+//            print("Watch received app context color update to: \(colorName)")
+//
+//            updateWatch(for: colorName)
+//        }
+//    }
+//
+//    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
+//        if let colorName = userInfo["TimeColor"] as? String {
+//            print("Watch received user info color update to: \(colorName)")
+//            updateWatch(for: colorName)
+//        }
+//    }
+//
+//    func session(_ session: WCSession, didFinish userInfoTransfer: WCSessionUserInfoTransfer, error: Error?) {
+//        if let error = error {
+//            print("Watch failed to recieve user info transfer: \(error.localizedDescription)")
+//            return
+//        }
+//    }
+//
+//    func updateWatch(for colorName:String) {
+//        UserDefaults.standard.set(colorName, forKey: "TimeColor")
+//        ExtensionDelegate.reloadComplications()
+//
+//        NotificationCenter.default.post(name: .refresh, object: nil)
+//    }
+//
+//}

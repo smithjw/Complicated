@@ -1,20 +1,20 @@
 //
 //  InterfaceController.swift
-//  Complicated Time WatchKit Extension
+//  It's Complicated WatchKit Extension
 //
-//  Created by Nick Rogness on 11/23/18.
-//  Copyright © 2018 Rogness Software. All rights reserved.
+//  Created by James Smith on 1/2/20.
+//  Copyright © 2020 James Smith. All rights reserved.
 //
 
 import WatchKit
-import WatchConnectivity
 import Foundation
+
 
 class InterfaceController: WKInterfaceController {
     
-    @IBOutlet var dateLabel:WKInterfaceLabel!
-    @IBOutlet var colorPicker:WKInterfacePicker!
-    @IBOutlet weak var topGroup: WKInterfaceGroup!
+    @IBOutlet weak var dateLabel: WKInterfaceLabel!
+    @IBOutlet weak var outerGroup: WKInterfaceGroup!
+    @IBOutlet weak var colourPicker: WKInterfacePicker!
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -23,7 +23,7 @@ class InterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshContent), name: .refresh, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(refreshContent), name: .refresh, object: nil)
         refreshContent()
     }
     
@@ -35,8 +35,29 @@ class InterfaceController: WKInterfaceController {
     
     @objc func refreshContent() {
         // Configure interface objects here.
-        let dayOfMonth = Calendar.current.component(.day, from: Date())
-        dateLabel.setText("\(dayOfMonth)")
+//        let today = Date()
+//        let dateFormat = DateFormatter()
+//        let numberFormatter = NumberFormatter()
+//
+//        numberFormatter.numberStyle = .ordinal
+//        dateFormat.dateFormat = "MMM"
+//        dateLabel.setText(dateFormat.string(from: today))
+        
+        
+//        -------
+        let dateFormat = DateFormatter()
+        let numberFormat = NumberFormatter()
+        dateFormat.dateFormat = "MMM"
+        numberFormat.numberStyle = .ordinal
+        let calendar = Calendar.current
+        let date = Date()
+        let dateComponents = calendar.component(.day, from: date)
+        let day = numberFormat.string(from: dateComponents as NSNumber)
+
+        let today = "\(dateFormat.string(from: date)) \(day!)"
+        dateLabel.setText("\(today)")
+        
+//        ----
         
         // Get the color from UserDefaults
         var currentColorIndex = 0
@@ -47,7 +68,7 @@ class InterfaceController: WKInterfaceController {
             
             if let color = Colors.color(namedBy: currentColorName) {
                 dateLabel.setTextColor(color)
-                topGroup.setBackgroundColor(color)
+//                outerGroup.setBackgroundColor(color)
             }
         }
         
@@ -56,28 +77,25 @@ class InterfaceController: WKInterfaceController {
             item.title = name
             return item
         }
-        colorPicker.setItems(pickerItems)
-        colorPicker.setSelectedItemIndex(currentColorIndex)
+        colourPicker.setItems(pickerItems)
+        colourPicker.setSelectedItemIndex(currentColorIndex)
+    }
+    @IBAction func setLargeBezelText(_ value: Bool) {
+        UserDefaults.standard.set(value, forKey: "LargeText")
+        print(value)
+        ExtensionDelegate.reloadComplications()
     }
     
-    @IBAction func colorPickerAction(_ value: Int) {
+    @IBAction func colourPickerAction(_ value: Int) {
         let (color, name) = Colors.colors[value]
         
         dateLabel.setTextColor(color)
-        topGroup.setBackgroundColor(color)
+//        outerGroup.setBackgroundColor(color)
         
         UserDefaults.standard.set(name, forKey: "TimeColor")
         
         ExtensionDelegate.reloadComplications()
         
-        if WCSession.isSupported() {
-            // 3
-            do {
-                let dictionary = ["TimeColor": name]
-                try WCSession.default.updateApplicationContext(dictionary)
-            } catch {
-                print("ERROR updating context: \(error)")
-            }
-        }
+        
     }
 }

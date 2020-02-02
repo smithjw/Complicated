@@ -1,9 +1,9 @@
 //
-//  Colors.swift
-//  Complicated Time
+//  Colours.swift
+//  It's Complicated
 //
-//  Created by Nick Rogness on 12/12/18.
-//  Copyright © 2018 Rogness Software. All rights reserved.
+//  Created by James Smith on 1/2/20.
+//  Copyright © 2020 James Smith. All rights reserved.
 //
 
 import Foundation
