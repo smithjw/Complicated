@@ -75,6 +75,21 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         return weekdayProvider
     }
     
+    private func createMonthDayTextProvider(from date:Date) -> CLKSimpleTextProvider {
+        let dateFormat = DateFormatter()
+        let numberFormat = NumberFormatter()
+        dateFormat.dateFormat = "MMM"
+        numberFormat.numberStyle = .ordinal
+        let calendar = Calendar.current
+        let date = Date()
+        let dateComponents = calendar.component(.day, from: date)
+        let day = numberFormat.string(from: dateComponents as NSNumber)
+
+        let today = CLKSimpleTextProvider(text: "\(dateFormat.string(from: date)) \(day!)")
+    
+        return today
+    }
+    
 //    private func createGaugeTemplate(from date:Date) -> CLKComplicationTemplateGraphicCircularClosedGaugeText {
 //        let dayProvider = createDayTextProvider(from: date)
 //        let guageProvider = CLKSimpleGaugeProvider(style: .ring, gaugeColor: self.configuredColor, fillFraction: 1.0)
@@ -120,18 +135,22 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         
 //        if UserDefaults.standard.object(forKey: "LargeText") as? Bool ?? true {
         if UserDefaults.standard.bool(forKey: "LargeText") {
+            // Using a Gauge in the corner complication rather than the Stack text results in the time display being more readable
+            // Could set the gauge to another colour, but setting as Black so it's not shown
             let gaugeProvider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: .black, fillFraction: 1.0)
             let template = CLKComplicationTemplateGraphicCornerGaugeText()
             template.outerTextProvider = timeProvider
             template.gaugeProvider = gaugeProvider
             
             return template
+        
         } else {
             let template = CLKComplicationTemplateGraphicCornerStackText()
             template.outerTextProvider = timeProvider
-            template.innerTextProvider = createWeekdayTextProvider(from: date)
+            template.innerTextProvider = createMonthDayTextProvider(from: date)
             
             return template
+        
         }
     }
     
