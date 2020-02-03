@@ -15,7 +15,7 @@
                             <items>
                                 <group alignment="center" verticalAlignment="center" contentMode="center" radius="6" id="xPh-Da-UC4">
                                     <items>
-                                        <label alignment="center" verticalAlignment="center" text="30" textAlignment="center" id="L44-Qj-LZg">
+                                        <label alignment="center" verticalAlignment="center" text="Jan 1st" textAlignment="center" id="L44-Qj-LZg">
                                             <fontDescription key="font" type="system" pointSize="30"/>
                                         </label>
                                     </items>
@@ -23,7 +23,7 @@
                             </items>
                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </group>
-                        <picker height="100" alignment="left" id="b95-DI-1xA">
+                        <picker height="75" alignment="left" id="b95-DI-1xA">
                             <connections>
                                 <action selector="colourPickerAction:" destination="AgC-eL-Hgc" id="9uo-mQ-4Hv"/>
                             </connections>

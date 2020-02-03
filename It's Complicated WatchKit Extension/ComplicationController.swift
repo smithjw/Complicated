@@ -8,7 +8,6 @@
 
 import ClockKit
 
-
 class ComplicationController: NSObject, CLKComplicationDataSource {
     
     static let minutesPerTimeline = 5
@@ -27,16 +26,6 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getSupportedTimeTravelDirections(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimeTravelDirections) -> Void) {
         handler([])
-    }
-    
-    func getTimelineStartDate(for complication: CLKComplication, withHandler handler: @escaping (Date?) -> Void) {
-        handler(Date())
-    }
-    
-    func getTimelineEndDate(for complication: CLKComplication, withHandler handler: @escaping (Date?) -> Void) {
-        
-        let hourFromNow = Date() + TimeInterval(ComplicationController.minutesPerTimeline * 60)
-        handler(hourFromNow)
     }
     
     func getPrivacyBehavior(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationPrivacyBehavior) -> Void) {
@@ -122,12 +111,6 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         return template
     }
     
-//    private func createTimelineEntry(from date:Date) -> CLKComplicationTimelineEntry {
-//        let entry = CLKComplicationTimelineEntry(date: date, complicationTemplate: createBezelCircularTextTemplate(from: date))
-//        return entry
-//    }
-    
-    
     func createGraphicCornerTemplate(from date:Date) -> CLKComplicationTemplate {
         
         let color = self.configuredColor
@@ -135,7 +118,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         let timeProvider = CLKTimeTextProvider(date: date)
         timeProvider.tintColor = color
         
-        if UserDefaults.standard.object(forKey: "LargeText") as? Bool ?? true {
+//        if UserDefaults.standard.object(forKey: "LargeText") as? Bool ?? true {
+        if UserDefaults.standard.bool(forKey: "LargeText") {
             let gaugeProvider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: .black, fillFraction: 1.0)
             let template = CLKComplicationTemplateGraphicCornerGaugeText()
             template.outerTextProvider = timeProvider

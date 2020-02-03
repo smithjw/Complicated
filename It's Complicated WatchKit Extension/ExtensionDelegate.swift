@@ -7,7 +7,16 @@
 //
 
 import WatchKit
-//import WatchConnectivity
+import Foundation
+
+let userDefaults = UserDefaults.standard
+extension UserDefaults {
+
+    func valueExists(forKey key: String) -> Bool {
+        return object(forKey: key) != nil
+    }
+
+}
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
@@ -34,12 +43,11 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     }
 
     func applicationDidFinishLaunching() {
-        // Perform any final initialization of your application.
         
         // Sets Large Text switch value to true
-        UserDefaults.standard.register(defaults: ["LargeText" : true])
-        UserDefaults.standard.set(true, forKey: "LargeText")
-        
+        if !userDefaults.valueExists(forKey: "LargeText") {
+            userDefaults.set(true, forKey: "LargeText")
+        }
         print("ExtensionDelegate applicationDidFinishLaunching()")
 
     }
@@ -48,7 +56,6 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
         print("ExtensionDelegate applicationDidBecomeActive")
-        
         
     }
 
@@ -99,57 +106,8 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
             }
         }
     }
-
-//    func setupWatchConnectivity() {
-//        if WCSession.isSupported() {
-//            let session  = WCSession.default
-//            session.delegate = self
-//            session.activate()
-//        }
-//    }
 }
 
 extension Notification.Name {
     static let refresh = Notification.Name("refresh")
 }
-
-//extension ExtensionDelegate: WCSessionDelegate {
-//    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-//        if let error = error {
-//            print("WC Session activation failed with error: \(error.localizedDescription)")
-//            return
-//        }
-//
-//        print("WC Session activated with state: \(activationState.rawValue)")
-//    }
-//
-//    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-//        if let colorName = applicationContext["TimeColor"] as? String {
-//            print("Watch received app context color update to: \(colorName)")
-//
-//            updateWatch(for: colorName)
-//        }
-//    }
-//
-//    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
-//        if let colorName = userInfo["TimeColor"] as? String {
-//            print("Watch received user info color update to: \(colorName)")
-//            updateWatch(for: colorName)
-//        }
-//    }
-//
-//    func session(_ session: WCSession, didFinish userInfoTransfer: WCSessionUserInfoTransfer, error: Error?) {
-//        if let error = error {
-//            print("Watch failed to recieve user info transfer: \(error.localizedDescription)")
-//            return
-//        }
-//    }
-//
-//    func updateWatch(for colorName:String) {
-//        UserDefaults.standard.set(colorName, forKey: "TimeColor")
-//        ExtensionDelegate.reloadComplications()
-//
-//        NotificationCenter.default.post(name: .refresh, object: nil)
-//    }
-//
-//}

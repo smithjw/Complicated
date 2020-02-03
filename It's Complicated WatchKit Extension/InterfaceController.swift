@@ -23,7 +23,6 @@ class InterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-//        NotificationCenter.default.addObserver(self, selector: #selector(refreshContent), name: .refresh, object: nil)
         refreshContent()
     }
     
@@ -35,16 +34,6 @@ class InterfaceController: WKInterfaceController {
     
     @objc func refreshContent() {
         // Configure interface objects here.
-//        let today = Date()
-//        let dateFormat = DateFormatter()
-//        let numberFormatter = NumberFormatter()
-//
-//        numberFormatter.numberStyle = .ordinal
-//        dateFormat.dateFormat = "MMM"
-//        dateLabel.setText(dateFormat.string(from: today))
-        
-        
-//        -------
         let dateFormat = DateFormatter()
         let numberFormat = NumberFormatter()
         dateFormat.dateFormat = "MMM"
@@ -56,8 +45,6 @@ class InterfaceController: WKInterfaceController {
 
         let today = "\(dateFormat.string(from: date)) \(day!)"
         dateLabel.setText("\(today)")
-        
-//        ----
         
         // Get the color from UserDefaults
         var currentColorIndex = 0
@@ -82,7 +69,7 @@ class InterfaceController: WKInterfaceController {
     }
     @IBAction func setLargeBezelText(_ value: Bool) {
         UserDefaults.standard.set(value, forKey: "LargeText")
-        print(value)
+        print("Large Text: ", value)
         ExtensionDelegate.reloadComplications()
     }
     

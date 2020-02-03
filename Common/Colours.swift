@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class Colors {
-    static let colors:[(UIColor, String)] = [(.white, "White"), (.black, "Black"), (.red, "Red"), (.blue, "Blue"), (.green, "Green"), (.yellow, "Yellow"), (.cyan, "Cyan")]
+    static let colors:[(UIColor, String)] = [(.white, "White"), (.red, "Red"), (.blue, "Blue"), (.green, "Green"), (.yellow, "Yellow"), (.cyan, "Cyan")]
     
     static var names:[String] {
         return colors.map({ (_, name) -> String in
