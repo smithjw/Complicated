@@ -6,11 +6,19 @@
 //  Copyright © 2020 James Smith. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class Colors {
-    static let colors:[(UIColor, String)] = [(.white, "White"), (.red, "Red"), (.blue, "Blue"), (.green, "Green"), (.yellow, "Yellow"), (.cyan, "Cyan")]
+    static let colors:[(UIColor, String)] = [
+        (UIColor(red: 242/255, green: 244/255, blue: 255/255, alpha: 1), "White"),
+        (UIColor(red: 250/255, green: 17/255, blue: 79/255, alpha: 1), "Red"),
+        (UIColor(red: 255/255, green: 149/255, blue: 0/255, alpha: 1), "Orange"),
+        (UIColor(red: 255/255, green: 230/255, blue: 32/255, alpha: 1), "Yellow"),
+        (UIColor(red: 4/255, green: 222/255, blue: 113/255, alpha: 1), "Green"),
+        (UIColor(red: 90/255, green: 200/255, blue: 250/255, alpha: 1), "Light Blue"),
+        (UIColor(red: 32/255, green: 148/255, blue: 250/255, alpha: 1), "Blue"),
+        (UIColor(red: 120/255, green: 122/255, blue: 255/255, alpha: 1), "Violet"),
+    ]
     
     static var names:[String] {
         return colors.map({ (_, name) -> String in
