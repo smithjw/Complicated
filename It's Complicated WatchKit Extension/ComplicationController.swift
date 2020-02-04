@@ -36,6 +36,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     private var configuredColor:UIColor {
         var color:UIColor = .white
+        // If colour has been set by the user in the app, use that otherwise default to white
         if let timeColorName = UserDefaults.standard.object(forKey: "TimeColor") as? String {
             if let timeColor = Colors.color(namedBy: timeColorName) {
                 color = timeColor
@@ -45,15 +46,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         return color
     }
     
-//    private var largeText:Bool {
-//        if let largeTextValue = UserDefaults.standard.object(forKey: "LargeText") as? Bool {
-//            if let largeText = Colors.color(namedBy: timeColorName) {
-//                color = timeColor
-//            }
-//        }
-//        
-//        return largeText
-//    }
+    // MARK: - Setup Date and Time Variables
     
     private func createDayTextProvider(from date:Date) -> CLKSimpleTextProvider {
         let dayOfMonth = Calendar.current.component(.day, from: date)
@@ -90,21 +83,12 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         return today
     }
     
-//    private func createGaugeTemplate(from date:Date) -> CLKComplicationTemplateGraphicCircularClosedGaugeText {
-//        let dayProvider = createDayTextProvider(from: date)
-//        let guageProvider = CLKSimpleGaugeProvider(style: .ring, gaugeColor: self.configuredColor, fillFraction: 1.0)
-//
-//        let gaugeTemplate = CLKComplicationTemplateGraphicCircularClosedGaugeText()
-//        gaugeTemplate.centerTextProvider = dayProvider
-//        gaugeTemplate.gaugeProvider = guageProvider
-//
-//        return gaugeTemplate
-//    }
-    
+
     private func createGaugeTemplate(from date:Date) -> CLKComplicationTemplateGraphicCircularOpenGaugeSimpleText {
+        let colour = self.configuredColor
         let dayProvider = createDayTextProvider(from: date)
         let weekdayProvider = createWeekdayTextProvider(from: date)
-        let guageProvider = CLKSimpleGaugeProvider(style: .ring, gaugeColors: [.cyan, .blue], gaugeColorLocations: nil, fillFraction: 1.0)
+        let guageProvider = CLKSimpleGaugeProvider(style: .ring, gaugeColor: colour, fillFraction: 1.0)
         
         let gaugeTemplate = CLKComplicationTemplateGraphicCircularOpenGaugeSimpleText()
         gaugeTemplate.centerTextProvider = dayProvider
@@ -114,14 +98,25 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         return gaugeTemplate
     }
     
+    private func createStackTextTemplate(from date:Date) -> CLKComplicationTemplateGraphicCircularStackText {
+        let dayProvider = createDayTextProvider(from: date)
+        let weekdayProvider = createWeekdayTextProvider(from: date)
+        
+        let stackTextTemplate = CLKComplicationTemplateGraphicCircularStackText()
+        stackTextTemplate.line1TextProvider = weekdayProvider
+        stackTextTemplate.line2TextProvider = dayProvider
+        
+        return stackTextTemplate
+    }
+    
     private func createBezelCircularTextTemplate(from date:Date) -> CLKComplicationTemplate {
-        let gaugeTemplate = createGaugeTemplate(from: date)
+        let circleTemplate = createStackTextTemplate(from: date)
         
         let template = CLKComplicationTemplateGraphicBezelCircularText()
         
         let textProvider = CLKTimeTextProvider(date: date)
         template.textProvider = textProvider
-        template.circularTemplate = gaugeTemplate
+        template.circularTemplate = circleTemplate
         
         return template
     }
@@ -158,10 +153,14 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         var template:CLKComplicationTemplate? = nil
         switch complication.family {
         case .graphicCorner:
+            // Corner complications on the Infograph face
             template = createGraphicCornerTemplate(from: date)
         case .graphicBezel:
+            // Contains text around the bezel of the watch and the top circular complication
             template = createBezelCircularTextTemplate(from: date)
         case .graphicCircular:
+            // Used for the three bottom complications on the Infograph face
+            // Also used for the circular complications on the Infograph Modular face
             template = createGaugeTemplate(from: date)
         
         @unknown default:
