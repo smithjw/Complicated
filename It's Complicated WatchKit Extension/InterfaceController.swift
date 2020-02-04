@@ -46,16 +46,15 @@ class InterfaceController: WKInterfaceController {
         let today = "\(dateFormat.string(from: date)) \(day!)"
         dateLabel.setText("\(today)")
         
-        // Get the color from UserDefaults
-        var currentColorIndex = 0
-        if let currentColorName = UserDefaults.standard.object(forKey: "TimeColor") as? String {
-            if let index = Colors.indexOf(colorName: currentColorName) {
-                currentColorIndex = index
+        // Get the colour from UserDefaults
+        var currentColourIndex = 0
+        if let currentColourName = UserDefaults.standard.object(forKey: "UserColour") as? String {
+            if let index = Colors.indexOf(colorName: currentColourName) {
+                currentColourIndex = index
             }
             
-            if let color = Colors.color(namedBy: currentColorName) {
-                dateLabel.setTextColor(color)
-//                outerGroup.setBackgroundColor(color)
+            if let colour = Colors.color(namedBy: currentColourName) {
+                dateLabel.setTextColor(colour)
             }
         }
         
@@ -65,7 +64,7 @@ class InterfaceController: WKInterfaceController {
             return item
         }
         colourPicker.setItems(pickerItems)
-        colourPicker.setSelectedItemIndex(currentColorIndex)
+        colourPicker.setSelectedItemIndex(currentColourIndex)
     }
     @IBAction func setLargeBezelText(_ value: Bool) {
         UserDefaults.standard.set(value, forKey: "LargeText")
@@ -74,13 +73,12 @@ class InterfaceController: WKInterfaceController {
     }
     
     @IBAction func colourPickerAction(_ value: Int) {
-        let (color, name) = Colors.colors[value]
+        let (colour, name) = Colors.colors[value]
         
-        dateLabel.setTextColor(color)
-//        outerGroup.setBackgroundColor(color)
+        dateLabel.setTextColor(colour)
         
-        UserDefaults.standard.set(name, forKey: "TimeColor")
-        
+        UserDefaults.standard.set(name, forKey: "UserColour")
+        print("Colour: ", value)
         ExtensionDelegate.reloadComplications()
         
         

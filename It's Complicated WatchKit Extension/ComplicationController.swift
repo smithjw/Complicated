@@ -34,23 +34,25 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     // MARK: - Timeline Population
     
-    private var configuredColor:UIColor {
-        var color:UIColor = .white
+    private var configuredColour:UIColor {
+        var colour:UIColor = .white
         // If colour has been set by the user in the app, use that otherwise default to white
-        if let timeColorName = UserDefaults.standard.object(forKey: "TimeColor") as? String {
-            if let timeColor = Colors.color(namedBy: timeColorName) {
-                color = timeColor
+        if let UserColourName = UserDefaults.standard.object(forKey: "UserColour") as? String {
+            if let UserColour = Colors.color(namedBy: UserColourName) {
+                colour = UserColour
             }
         }
         
-        return color
+        return colour
     }
     
     // MARK: - Setup Date and Time Variables
     
-    private func createDayTextProvider(from date:Date) -> CLKSimpleTextProvider {
-        let dayOfMonth = Calendar.current.component(.day, from: date)
-        let dayProvider = CLKSimpleTextProvider(text: "\(dayOfMonth)", shortText: "\(dayOfMonth)")
+    private func createDayTextProvider(from date:Date) -> CLKDateTextProvider {
+//        let dayOfMonth = Calendar.current.component(.day, from: date)
+//        let dayProvider = CLKSimpleTextProvider(text: "\(dayOfMonth)", shortText: "\(dayOfMonth)")
+        
+        let dayProvider = CLKDateTextProvider(date: Date(), units: .day)
         
         return dayProvider
     }
@@ -59,36 +61,36 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEE"
         let dayInWeek = dateFormatter.string(from: date)
-        
+
         let weekdayProvider = CLKSimpleTextProvider(text: "\(dayInWeek)", shortText: "\(dayInWeek)")
         
-        let color = self.configuredColor
-        weekdayProvider.tintColor = color
+        let colour = self.configuredColour
+        weekdayProvider.tintColor = colour
         
         return weekdayProvider
     }
     
-    private func createMonthDayTextProvider(from date:Date) -> CLKSimpleTextProvider {
-        let dateFormat = DateFormatter()
-        let numberFormat = NumberFormatter()
-        dateFormat.dateFormat = "MMM"
-        numberFormat.numberStyle = .ordinal
-        let calendar = Calendar.current
-        let date = Date()
-        let dateComponents = calendar.component(.day, from: date)
-        let day = numberFormat.string(from: dateComponents as NSNumber)
+    private func createWeekdayDayTextProvider(from date:Date) -> CLKDateTextProvider {
+//        let dateFormat = DateFormatter()
+//        let numberFormat = NumberFormatter()
+//        dateFormat.dateFormat = "MMM"
+//        numberFormat.numberStyle = .ordinal
+//        let calendar = Calendar.current
+//        let date = Date()
+//        let dateComponents = calendar.component(.day, from: date)
+//        let day = numberFormat.string(from: dateComponents as NSNumber)
 
-        let today = CLKSimpleTextProvider(text: "\(dateFormat.string(from: date)) \(day!)")
+        let today = CLKDateTextProvider(date: Date(), units: [.weekday, .day, .month])
     
         return today
     }
     
 
-    private func createGaugeTemplate(from date:Date) -> CLKComplicationTemplateGraphicCircularOpenGaugeSimpleText {
-        let colour = self.configuredColor
+    private func createGaugeStackTextTemplate(from date:Date) -> CLKComplicationTemplateGraphicCircularOpenGaugeSimpleText {
+        let colour = self.configuredColour
         let dayProvider = createDayTextProvider(from: date)
         let weekdayProvider = createWeekdayTextProvider(from: date)
-        let guageProvider = CLKSimpleGaugeProvider(style: .ring, gaugeColor: colour, fillFraction: 1.0)
+        let guageProvider = CLKSimpleGaugeProvider(style: .ring, gaugeColor: colour, fillFraction: CLKSimpleGaugeProviderFillFractionEmpty)
         
         let gaugeTemplate = CLKComplicationTemplateGraphicCircularOpenGaugeSimpleText()
         gaugeTemplate.centerTextProvider = dayProvider
@@ -123,13 +125,12 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func createGraphicCornerTemplate(from date:Date) -> CLKComplicationTemplate {
         
-        let color = self.configuredColor
-        
+        let colour = self.configuredColour
+        let largeText = UserDefaults.standard.bool(forKey: "LargeText")
         let timeProvider = CLKTimeTextProvider(date: date)
-        timeProvider.tintColor = color
+        timeProvider.tintColor = colour
         
-//        if UserDefaults.standard.object(forKey: "LargeText") as? Bool ?? true {
-        if UserDefaults.standard.bool(forKey: "LargeText") {
+        if largeText {
             // Using a Gauge in the corner complication rather than the Stack text results in the time display being more readable
             // Could set the gauge to another colour, but setting as Black so it's not shown
             let gaugeProvider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: .black, fillFraction: 1.0)
@@ -142,7 +143,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         } else {
             let template = CLKComplicationTemplateGraphicCornerStackText()
             template.outerTextProvider = timeProvider
-            template.innerTextProvider = createMonthDayTextProvider(from: date)
+            template.innerTextProvider = createWeekdayDayTextProvider(from: date)
             
             return template
         
@@ -161,8 +162,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         case .graphicCircular:
             // Used for the three bottom complications on the Infograph face
             // Also used for the circular complications on the Infograph Modular face
-            template = createGaugeTemplate(from: date)
-        
+            template = createGaugeStackTextTemplate(from: date)
         @unknown default:
             print("Ummmmm")
         }
@@ -180,10 +180,10 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         handler(entry)
     }
     
-    func getTimelineEntries(for complication: CLKComplication, before date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
-        // Call the handler with the timeline entries prior to the given date
-        handler(nil)
-    }
+//    func getTimelineEntries(for complication: CLKComplication, before date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
+//        // Call the handler with the timeline entries prior to the given date
+//        handler(nil)
+//    }
     
     func getTimelineEntries(for complication: CLKComplication, after date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
         // Call the handler with the timeline entries after to the given date
@@ -211,7 +211,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getLocalizableSampleTemplate(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
         // This method will be called once per supported complication, and the results will be cached
-        let currentDate = Date.init()
+        let currentDate = Date()
         let template = buildTemplate(for: complication, at: currentDate)
         
         handler(template)
