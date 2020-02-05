@@ -68,7 +68,7 @@ class InterfaceController: WKInterfaceController {
     }
     @IBAction func setLargeBezelText(_ value: Bool) {
         UserDefaults.standard.set(value, forKey: "LargeText")
-        print("Large Text: ", value)
+        Log.d("Large Text: \(value)")
         ExtensionDelegate.reloadComplications()
     }
     
@@ -78,7 +78,7 @@ class InterfaceController: WKInterfaceController {
         dateLabel.setTextColor(colour)
         
         UserDefaults.standard.set(name, forKey: "UserColour")
-        print("Colour: ", value)
+        Log.d("Colour: \(value)")
         ExtensionDelegate.reloadComplications()
         
         

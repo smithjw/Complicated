@@ -17,6 +17,7 @@
 		1A88E3C623E4EC7200EEC663 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A88E3C523E4EC7200EEC663 /* ComplicationController.swift */; };
 		1A88E3C823E4EC7300EEC663 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A88E3C723E4EC7300EEC663 /* Assets.xcassets */; };
 		1A88E3DC23E4F26900EEC663 /* Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A88E3DB23E4F26900EEC663 /* Colours.swift */; };
+		1A9DADB823EA35860061929E /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9DADB723EA35860061929E /* Log.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		1A88E3C723E4EC7300EEC663 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A88E3C923E4EC7300EEC663 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A88E3DB23E4F26900EEC663 /* Colours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colours.swift; sourceTree = "<group>"; };
+		1A9DADB723EA35860061929E /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 			children = (
 				1A88E3DB23E4F26900EEC663 /* Colours.swift */,
 				1A36262E23E5437A00BA6653 /* Unused.swift */,
+				1A9DADB723EA35860061929E /* Log.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 					};
 					1A88E3AC23E4EC6F00EEC663 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 					};
 					1A88E3BB23E4EC7200EEC663 = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -268,6 +272,7 @@
 			files = (
 				1A88E3C423E4EC7200EEC663 /* ExtensionDelegate.swift in Sources */,
 				1A88E3DC23E4F26900EEC663 /* Colours.swift in Sources */,
+				1A9DADB823EA35860061929E /* Log.swift in Sources */,
 				1A88E3C223E4EC7200EEC663 /* InterfaceController.swift in Sources */,
 				1A36262F23E5437A00BA6653 /* Unused.swift in Sources */,
 				1A88E3C623E4EC7200EEC663 /* ComplicationController.swift in Sources */,
@@ -464,14 +469,21 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9E4JQYV2GD;
 				IBSC_MODULE = It_s_Complicated_WatchKit_Extension;
 				INFOPLIST_FILE = "It's Complicated WatchKit App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.smithjw.timeofday.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 6.0;
@@ -483,10 +495,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9E4JQYV2GD;
 				IBSC_MODULE = It_s_Complicated_WatchKit_Extension;
 				INFOPLIST_FILE = "It's Complicated WatchKit App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.smithjw.timeofday.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;

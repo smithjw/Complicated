@@ -13,13 +13,13 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     static let minutesPerTimeline = 5
     
     override init() {
-        print("ComplicationController init()")
+        Log.d("ComplicationController init()")
         
         ExtensionDelegate.scheduleComplicationUpdate()
     }
     
     deinit {
-        print("ComplicationController deinit()")
+        Log.d("ComplicationController deinit()")
     }
     
     // MARK: - Timeline Configuration
@@ -164,7 +164,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             // Also used for the circular complications on the Infograph Modular face
             template = createGaugeStackTextTemplate(from: date)
         @unknown default:
-            print("Ummmmm")
+            Log.i("Ummmmm")
         }
         
         return template

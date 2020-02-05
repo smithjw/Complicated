@@ -25,10 +25,10 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     static func scheduleComplicationUpdate() {
         let currentDate = Date()
         let scheduleDate = currentDate + TimeInterval(ComplicationController.minutesPerTimeline * 60)
-        print("Scheduling background refresh task at \(currentDate) for: \(scheduleDate)")
+        Log.d("Scheduling background refresh task at \(currentDate) for: \(scheduleDate)")
         WKExtension.shared().scheduleBackgroundRefresh(withPreferredDate: scheduleDate, userInfo: nil) { (error) in
             if let err = error {
-                print("Failed to schedule background refresh: \(err)")
+                Log.e("Failed to schedule background refresh: \(err)")
             }
         }
     }
@@ -37,7 +37,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         let complicationServer = CLKComplicationServer.sharedInstance()
         guard let complications = complicationServer.activeComplications else { return }
         for complication in complications {
-            print("Updating Complication")
+            Log.i("Updating Complication")
             complicationServer.reloadTimeline(for: complication)
         }
     }
@@ -48,21 +48,21 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         if !userDefaults.valueExists(forKey: "LargeText") {
             userDefaults.set(true, forKey: "LargeText")
         }
-        print("ExtensionDelegate applicationDidFinishLaunching()")
+        Log.v("")
 
     }
 
     func applicationDidBecomeActive() {
         // Restart any tasks that were paused (or not yet started) while the application was inactive.
         ExtensionDelegate.reloadComplications()
-        print("ExtensionDelegate applicationDidBecomeActive")
+        Log.v("")
         
     }
 
     func applicationWillResignActive() {
         // Sent when the application is about to move from active to inactive state.
         ExtensionDelegate.reloadComplications()
-        print("ExtensionDelegate applicationWillResignActive")
+        Log.v("")
     }
 
     func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {
@@ -78,27 +78,27 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
                 
                 backgroundTask.setTaskCompletedWithSnapshot(false)
             case let snapshotTask as WKSnapshotRefreshBackgroundTask:
-                print("BACKGROUND: WKSnapshotRefreshBackgroundTask")
+                Log.v("")
                 // Snapshot tasks have a unique completion call, make sure to set your expiration date
                 snapshotTask.setTaskCompleted(restoredDefaultState: true, estimatedSnapshotExpiration: Date.distantFuture, userInfo: nil)
             case let connectivityTask as WKWatchConnectivityRefreshBackgroundTask:
-                print("BACKGROUND: WKWatchConnectivityRefreshBackgroundTask")
+                Log.v("")
                 // Be sure to complete the connectivity task once you’re done.
                 connectivityTask.setTaskCompletedWithSnapshot(false)
             case let urlSessionTask as WKURLSessionRefreshBackgroundTask:
-                print("BACKGROUND: WKURLSessionRefreshBackgroundTask")
+                Log.v("")
                 // Be sure to complete the URL session task once you’re done.
                 urlSessionTask.setTaskCompletedWithSnapshot(false)
             case let relevantShortcutTask as WKRelevantShortcutRefreshBackgroundTask:
-                print("BACKGROUND: WKRelevantShortcutRefreshBackgroundTask")
+                Log.v("")
                 // Be sure to complete the relevant-shortcut task once you're done.
                 relevantShortcutTask.setTaskCompletedWithSnapshot(false)
             case let intentDidRunTask as WKIntentDidRunRefreshBackgroundTask:
-                print("BACKGROUND: WKIntentDidRunRefreshBackgroundTask")
+                Log.v("")
                 // Be sure to complete the intent-did-run task once you're done.
                 intentDidRunTask.setTaskCompletedWithSnapshot(false)
             default:
-                print("BACKGROUND: \(task.classForCoder.description())")
+                Log.v("BACKGROUND: \(task.classForCoder.description())")
                 // make sure to complete unhandled task types
                 task.setTaskCompletedWithSnapshot(false)
             }
